@@ -20,11 +20,9 @@
     </head>
     <body>       
             <header>
-                <div>
-                    
+                <div>                    
                     <a class="logo" href="sesioniniciada.jsp">El Rinconcito</a>
-                </div>
-              
+                </div>              
             </header>
         <div class="container mt-4">
                 
@@ -78,7 +76,7 @@
                                           
                                   
                                           "</tr>"); 
-                                  total += carrito.getListaProductos().get(i).getPrecioCompra()
+                                  total += carrito.getListaProductos().get(i).getPrecioCompra();
                           
                          ;}
                             
