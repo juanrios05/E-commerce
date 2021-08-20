@@ -1,9 +1,3 @@
-<%-- 
-    Document   : agregarproducto
-    Created on : 14/07/2021, 04:37:20 PM
-    Author     : juanb
---%>
-
 <%@page import="java.util.List"%>
 <%@page import="Modelos.Producto"%>
 <%@page import="ModelosDAO.ProductoDAO"%>
@@ -16,13 +10,13 @@
         <script src="https://kit.fontawesome.com/fec6c7f184.js" crossorigin="anonymous"></script>
         <script src="js/imagenproducto.js" type="text/javascript"></script>
         <link rel="stylesheet" href="css/style2.css">
-        <title>Productos</title>
+        <title>Agregar Producto</title>
     </head>
     <body>
         <div class="grid-container">
             <header>
                 <div>
-                    <a class="logo" href="#">El Rinconcito</a>
+                    <a class="logo">El Rinconsito</a>
                 </div>            
             </header>            
             <main>
@@ -34,24 +28,24 @@
                                     <h2>Agregar Producto</h2>
                                 </li>
                                 <li>
-                                    <input type="text" placeholder="Id Producto..." name="idproducto" id="idproducto" />
+                                    <input type="text" placeholder="Id Producto..." name="idproducto" id="idproducto" required />
                                 </li>                                
                                 <li>
-                                    <input type="text" placeholder="Nombre..." name="nombreproducto" id="nombreproducto" />
+                                    <input type="text" placeholder="Nombre..." name="nombreproducto" id="nombreproducto" required />
                                 </li>
                                 <li>
-                                    <input type="text" placeholder="Descripcion..." name="descripcionproducto" id="descripcionproducto" />
+                                    <input type="text" placeholder="Descripcion..." name="descripcionproducto" id="descripcionproducto" required />
                                 </li>
                                 <li>
-                                    <input type="file" accept="image/*" onchange="ingresarImagen(this.files[0].name)" placeholder="Presentacion..." name="presentacionproducto" id="presentacionproductoId" />
-                                    <input type="hidden" placeholder="Presentacion..." name="nombreimagenproducto" id="nombreimagenId" />
+                                    <input type="file" accept="image/*" onchange="ingresarImagen(this.files[0].name)" placeholder="Presentacion..." name="presentacionproducto" id="presentacionproductoId" required />
+                                    <input type="hidden" placeholder="Presentacion..." name="nombreimagenproducto" id="nombreimagenId" required />
                                 </li>
                                 <li>
                                     <%
                                         ProductoDAO daoMarca = new ProductoDAO();
                                         List<Producto> marcas = daoMarca.listarMarcas();
                                     %> 
-                                    <select name="marcaproducto">
+                                    <select name="marcaproducto" onfocus='this.size = 4;' onblur='this.size = 1;' onchange='this.size = 1; this.blur();'>
                                         <%
                                             for (Producto marca : marcas) {
                                         %>
@@ -60,23 +54,24 @@
                                     </select>
                                 </li>
                                 <li>
-                                    <input type="date" placeholder="Fecha Vencimineto..." name="vencimientoproducto" id="vencimientoproducto" />
+                                    <label>Fecha de Vencimiento</label>
+                                    <input type="date" placeholder="Fecha Vencimineto..." name="vencimientoproducto" id="vencimientoproducto" required />
                                 </li>
                                 <li>
-                                    <input type="text" placeholder="Precio Compra..." name="preciocompraproducto" id="preciocompraproducto" />
+                                    <input type="text" placeholder="Precio Compra..." name="preciocompraproducto" id="preciocompraproducto" required />
                                 </li>
                                 <li>
-                                    <input type="text" placeholder="Precio Venta..." name="precioventaproducto" id="precioventaproducto" />
+                                    <input type="text" placeholder="Precio Venta..." name="precioventaproducto" id="precioventaproducto" required />
                                 </li>
                                 <li>
-                                    <input type="text" placeholder="Cantidad en Stock..." name="cantidadproducto" id="cantidadproducto" />
+                                    <input type="text" placeholder="Cantidad en Stock..." name="cantidadproducto" id="cantidadproducto" required />
                                 </li>
                                 <li>  
                                     <%
                                         ProductoDAO dao = new ProductoDAO();
                                         List<Producto> subcategorias = dao.listarSubcategorias();
                                     %>
-                                    <select name="subcategoriaproducto" >
+                                    <select name="subcategoriaproducto" onfocus='this.size = 4;' onblur='this.size = 1;' onchange='this.size = 1; this.blur();' >
                                         <%
                                             for (Producto subcategoria : subcategorias) {
                                         %>
@@ -85,19 +80,18 @@
                                     </select>
                                 </li>
                                 <li>
-                                    <input type="submit" value="Agregar" name="accion">                                    
+                                    <input class="btn-agregarproducto" type="submit" value="Agregar" name="accion">                                    
                                 </li>
                                 <li>
-                                    <a href="Administrador?accion=listarProducto">Regresar</a>
+                                    <a class="btn-cancelar" href="Administrador?accion=listarProducto">Cancelar</a>
                                 </li>
                             </ul>
                         </form>
-                        <a href="Administrador?accion=nuevamarca">Agregar nueva marca</a>
-                        <a href="Administrador?accion=nuevasubcategoria">Agregar nueva subcategoria</a>
+                        <a class="btn-nuevaopcion" href="Administrador?accion=nuevamarca">Nueva Marca</a>
+                        <a class="btn-nuevaopcion" href="Administrador?accion=nuevasubcategoria">Nueva Sucategoría</a>
                     </div>                    
                 </div>
-        </div>
-    </main>
-</div>
-</body>
+            </main>
+        </div>    
+    </body>
 </html>

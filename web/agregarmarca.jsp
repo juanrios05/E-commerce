@@ -10,8 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://kit.fontawesome.com/fec6c7f184.js" crossorigin="anonymous"></script>
-        <script src="js/imagenproducto.js" type="text/javascript"></script>
+        <script src="https://kit.fontawesome.com/fec6c7f184.js" crossorigin="anonymous"></script>        
         <link rel="stylesheet" href="css/style2.css">
         <title>Agregar Marca</title>
     </head>
@@ -19,7 +18,7 @@
         <div class="grid-container">
             <header>
                 <div>
-                    <a class="logo" >El Rinconcito</a>
+                    <a class="logo" >El Rinconsito</a>
                 </div>            
             </header>
             <main>
@@ -31,11 +30,14 @@
                                     <h2>Nueva Marca</h2>
                                 </li>                
                                 <li>
-                                    <input type="text" placeholder="Nombre Marca..." name="nombremarca" id="nombremarca" />
+                                    <input type="text" placeholder="Nombre Marca..." name="nombremarca" id="nombremarca" required/>
                                 </li>
                                 <li>
-                                    <input type="submit" value="Agregar Marca" name="accion">
+                                    <input class="btn-agregarproducto" type="submit" value="Agregar Marca" name="accion">
                                 </li>
+                                <li>
+                                    <a class="btn-cancelar" href="Administrador?accion=agregarProducto">Cancelar</a>
+                                </li>                                    
                             </ul>
                         </form>
                     </div>
