@@ -16,16 +16,43 @@
                 </div>                  
             </header>               
             <main>
-                <div>
-                    <ul class="lista-informes">
-                        <li>
-                            <a href="informeclientes.jsp" target="contenedorregistros">Clientes</a>
-                        </li>
-                        <span><b>|</b></span>
-                        <li>
-                            <a href="informeclientes.jsp" target="contenedorregistros">Productos</a>
-                        </li>
-                    </ul>                    
+                <div class="menu-informes">
+                    <div class="dropdown">
+                        <span>Clientes</span>
+                        <div class="dropdown-content">
+                            <a href="informesjsp/listadoclientes.jsp" target="contenedorregistros">Listado Clientes</a>   
+                            <a href="informeclientes.jsp" target="contenedorregistros">Mejores Clientes</a>                            
+                        </div>
+                    </div>
+                    <span><b>|</b></span>
+                    <div class="dropdown">
+                        <span>Proveedores</span>
+                        <div class="dropdown-content">
+                            <p>Mejor Proveedor</p>                                                        
+                        </div>                        
+                    </div>
+                    <span><b>|</b></span>
+                    <div class="dropdown">
+                        <span>Productos</span>
+                        <div class="dropdown-content">
+                            <p>Mejor Producto</p>
+                        </div>                        
+                    </div>                    
+                    <span><b>|</b></span>
+                    <div class="dropdown">
+                        <span>Ventas</span>
+                        <div class="dropdown-content">
+                            <p>Mayor Venta</p>                            
+
+                        </div>                        
+                    </div>  
+                    <span><b>|</b></span>
+                    <div class="dropdown">
+                        <span>Compras</span>
+                        <div class="dropdown-content">
+                            <p>Menor Venta</p>                                                        
+                        </div>                        
+                    </div>  
                 </div>
                 <div>
                     <iframe name="contenedorregistros" style="height: 600px; width: 100%;"></iframe>

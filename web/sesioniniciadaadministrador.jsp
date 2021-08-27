@@ -47,7 +47,7 @@
                     <a href="Administrador?accion=copiaSeguridadBaseDatos">Base de Datos</a>
                 </div>
                 <strong>|</strong>
-                <div class="dropdown">                    
+                <div>                   
                     <form method="post" action="Validar">
                         <button class="danger" type="submit" name="accion" value="Salir">Cerrar Sesion</button>
                     </form>                                        

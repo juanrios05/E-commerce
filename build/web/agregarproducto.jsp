@@ -19,7 +19,7 @@
                     <a class="logo">El Rinconsito</a>
                 </div>            
             </header>            
-            <main>
+            <main>                
                 <div class="form-container">
                     <div class="fomulario-producto">
                         <form action="Administrador" class="form-producto" id="ingresoproducto">
@@ -45,7 +45,8 @@
                                         ProductoDAO daoMarca = new ProductoDAO();
                                         List<Producto> marcas = daoMarca.listarMarcas();
                                     %> 
-                                    <select name="marcaproducto" onfocus='this.size = 4;' onblur='this.size = 1;' onchange='this.size = 1; this.blur();'>
+                                    <select name="marcaproducto" onfocus='this.size = 4;' onblur='this.size = 1;' onchange='this.size = 1;
+                                            this.blur();'>
                                         <%
                                             for (Producto marca : marcas) {
                                         %>
@@ -71,7 +72,8 @@
                                         ProductoDAO dao = new ProductoDAO();
                                         List<Producto> subcategorias = dao.listarSubcategorias();
                                     %>
-                                    <select name="subcategoriaproducto" onfocus='this.size = 4;' onblur='this.size = 1;' onchange='this.size = 1; this.blur();' >
+                                    <select name="subcategoriaproducto" onfocus='this.size = 4;' onblur='this.size = 1;' onchange='this.size = 1;
+                                            this.blur();' >
                                         <%
                                             for (Producto subcategoria : subcategorias) {
                                         %>
