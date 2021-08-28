@@ -12,19 +12,15 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%-- Conexion a Base de Datos, ubicación de archivos necesarios y parametros necesarios --%>
         <%
-            
+           
             Connection cn;
                 Class.forName("com.mysql.jdbc.Driver");
                 cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/elrinconsito2", "root", "");
 	
             File reportFile = new File(application.getRealPath("Informes/Clientes.jasper"));
-            Map parameters = new HashMap();
-              
-
-            //parameters.put("nombre_del_parametro_jasper", "valor que se manda");
-            parameters.put("id",4);
-            
+            Map parameters = new HashMap();                          
             
             byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath(), parameters, cn);
             response.setContentType("application/pdf");

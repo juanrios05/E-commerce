@@ -47,11 +47,13 @@
                                     <th>Total</th>                                                
                                 </tr>
                             </thead>
+                            <%-- Carga de ventas --%>
                             <%
                                 DetalleVentaDAO dao = new DetalleVentaDAO();
                                 List<DetalleVenta> list = dao.listarVentas();
                                 Iterator<DetalleVenta> iter = list.iterator();
                                 DetalleVenta venta = null;
+                                double ventaAcum = 0.0;
                                 while (iter.hasNext()) {
                                     venta = iter.next();
 
@@ -70,9 +72,14 @@
                                     <td><%= venta.getCantidadProducto()%></td>   
                                     <td><%= venta.getPrecioTotalVenta()%></td>                           
                                 </tr>
-                                <%}%>
+                                <% ventaAcum = ventaAcum + venta.getPrecioTotalVenta(); %>
+                                <%}%>                                
                             </tbody>
                         </table>
+                            <div class="campo-calculado">
+                                <strong><label>Total Ventas:</label></strong>
+                                <%= ventaAcum%>
+                            </div>                        
                     </div>
                 </div>
             </main>

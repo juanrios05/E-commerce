@@ -43,6 +43,7 @@
                                     <th>Accion</th>                        
                                 </tr>
                             </thead>
+                            <%-- Carga de proveedores --%>                           
                             <%
                                 ProveedorDAO dao = new ProveedorDAO();
                                 List<Proveedor> list = dao.listarProovedores();

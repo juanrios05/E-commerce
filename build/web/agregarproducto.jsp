@@ -19,7 +19,7 @@
                     <a class="logo">El Rinconsito</a>
                 </div>            
             </header>            
-            <main>
+            <main>                
                 <div class="form-container">
                     <div class="fomulario-producto">
                         <form action="Administrador" class="form-producto" id="ingresoproducto">
@@ -41,11 +41,13 @@
                                     <input type="hidden" placeholder="Presentacion..." name="nombreimagenproducto" id="nombreimagenId" required />
                                 </li>
                                 <li>
+                                    <%-- Carga de las marcas --%>
                                     <%
                                         ProductoDAO daoMarca = new ProductoDAO();
                                         List<Producto> marcas = daoMarca.listarMarcas();
                                     %> 
-                                    <select name="marcaproducto" onfocus='this.size = 4;' onblur='this.size = 1;' onchange='this.size = 1; this.blur();'>
+                                    <select name="marcaproducto" onfocus='this.size = 4;' onblur='this.size = 1;' onchange='this.size = 1;
+                                            this.blur();'>
                                         <%
                                             for (Producto marca : marcas) {
                                         %>
@@ -67,11 +69,13 @@
                                     <input type="text" placeholder="Cantidad en Stock..." name="cantidadproducto" id="cantidadproducto" required />
                                 </li>
                                 <li>  
+                                    <%-- Carga de las subcategorias --%>
                                     <%
                                         ProductoDAO dao = new ProductoDAO();
                                         List<Producto> subcategorias = dao.listarSubcategorias();
                                     %>
-                                    <select name="subcategoriaproducto" onfocus='this.size = 4;' onblur='this.size = 1;' onchange='this.size = 1; this.blur();' >
+                                    <select name="subcategoriaproducto" onfocus='this.size = 4;' onblur='this.size = 1;' onchange='this.size = 1;
+                                            this.blur();' >
                                         <%
                                             for (Producto subcategoria : subcategorias) {
                                         %>

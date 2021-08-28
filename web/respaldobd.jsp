@@ -8,6 +8,7 @@
 <%@page import="java.sql.*" %>
 <%@page import="java.util.Calendar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- Creacion de fecha, nombre de archivo y comando para generar un respaldo de la base de datos con comprobación de JS --%>
 <%
     try {
         Calendar fecha = Calendar.getInstance();        

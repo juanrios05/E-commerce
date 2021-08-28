@@ -1,9 +1,3 @@
-<%-- 
-    Document   : agregarsubcategoria
-    Created on : 14/07/2021, 07:21:31 PM
-    Author     : juanb
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

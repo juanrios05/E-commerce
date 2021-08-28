@@ -35,6 +35,7 @@
             <main>
                 <div>
                     <ul class="productos">
+                        <%-- Carga de los productos --%>
                         <%= cp.obtenerProductos() %>
                     </ul>
                 </div>

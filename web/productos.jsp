@@ -31,7 +31,7 @@
                 <a href="sesioniniciadaadministrador.jsp"><i class="fas fa-arrow-left icono-regresar" title="Regresar"></i></a>                
                 <div class="form-container">                         
                     <div class="tabla-producto">
-                        <% // Cuadro de busqueda  %>
+                        <%-- Cuadro de busqueda --%>
                         <input id="termino" type="text" onkeyup="buscar()" placeholder="Buscar..." />                            
                         <a href="Administrador?accion=agregarProducto"><i class="far fa-plus-square" title="Nuevo Producto..."></i></a>                       
                         <table id="datos" border="1">
@@ -51,6 +51,7 @@
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
+                            <%-- Carga de productos --%>                            
                             <%
                                 ProductoDAO dao = new ProductoDAO();
                                 List<Producto> list = dao.listarProductos();

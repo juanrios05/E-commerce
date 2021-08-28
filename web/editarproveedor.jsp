@@ -17,6 +17,7 @@
         <title>Editar Proveedor</title>
     </head>
     <body>
+        <%-- Carga de los datos identificados por el id del proveedor --%>
         <%
             ProveedorDAO provDAO = new ProveedorDAO();
             String idProveedor = (String) request.getAttribute("idprov");
