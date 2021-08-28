@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelos;
 
-/**
- *
- * @author juanb
- */
 public class Producto {
 
     private String idProducto;
@@ -23,11 +14,13 @@ public class Producto {
     private int cantidad;
     private int idSubcategoria;      
     private String nombreSubcategoria;
+    private String idProveedorProducto;
+    private String nombreProveedorProducto;
 
     public Producto() {
     }
 
-    public Producto(String idProducto, String nombre, String descripcion, String presentacion, int idMarca, String nombreMarca, String fechaVencimiento, double precioCompra, double precioVenta, int cantidad, int idSubcategoria, String nombreSubcategoria) {
+    public Producto(String idProducto, String nombre, String descripcion, String presentacion, int idMarca, String nombreMarca, String fechaVencimiento, double precioCompra, double precioVenta, int cantidad, int idSubcategoria, String nombreSubcategoria, String idProveedorProducto, String nombreProveedorProducto) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -40,6 +33,8 @@ public class Producto {
         this.cantidad = cantidad;
         this.idSubcategoria = idSubcategoria;
         this.nombreSubcategoria = nombreSubcategoria;
+        this.idProveedorProducto = idProveedorProducto;
+        this.nombreProveedorProducto = nombreProveedorProducto;
     }
 
     public String getIdProducto() {
@@ -138,6 +133,20 @@ public class Producto {
         this.nombreSubcategoria = nombreSubcategoria;
     }
 
-    
+    public String getIdProveedorProducto() {
+        return idProveedorProducto;
+    }
 
+    public void setIdProveedorProducto(String idProveedorProducto) {
+        this.idProveedorProducto = idProveedorProducto;
+    }
+
+    public String getNombreProveedorProducto() {
+        return nombreProveedorProducto;
+    }
+
+    public void setNombreProveedorProducto(String nombreProveedorProducto) {
+        this.nombreProveedorProducto = nombreProveedorProducto;
+    }
+    
 }

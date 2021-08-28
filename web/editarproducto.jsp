@@ -17,8 +17,16 @@
         <script src="js/imagenproducto.js" type="text/javascript"></script>
         <link rel="stylesheet" href="css/style2.css">
         <title>Editar Producto</title>
+        <script>
+            function mensaje() {
+                alert("Por favor vuelva a seleccionar la marca y la subcategoría.");
+            }
+            mensaje();
+        </script>
     </head>
     <body>
+        <%-- Carga de los datos identificados por el id del producto --%>
+        
         <%
             ProductoDAO prodDAO = new ProductoDAO();
             String idProducto = (String) request.getAttribute("idprod");
@@ -27,7 +35,7 @@
         <div class="grid-container">
             <header>
                 <div>
-                    <a class="logo" href="#">El Rinconcito</a>
+                    <a class="logo">El Rinconsito</a>
                 </div>            
             </header>            
             <main>
@@ -39,27 +47,28 @@
                                     <h2>Editar Producto</h2>
                                 </li>
                                 <li>
-                                    <input type="text" placeholder="Id Producto..." name="idproducto" value="<%= p.getIdProducto()%>" id="idproducto" />                    
+                                    <input type="text" placeholder="Id Producto..." name="idproducto" value="<%= p.getIdProducto()%>" id="idproducto" readonly required />                    
                                 </li>                                
                                 <li>
-                                    <input type="text" placeholder="Nombre..." name="nombreproducto" value="<%= p.getNombre()%>" id="nombreproducto" />
+                                    <input type="text" placeholder="Nombre..." name="nombreproducto" value="<%= p.getNombre()%>" id="nombreproducto" required />
                                     <input type="hidden" name="producto" value="" />
                                 </li>
                                 <li>
-                                    <input type="text" placeholder="Descripcion..." name="descripcionproducto" value="<%= p.getDescripcion()%>" id="descripcionproducto" />
+                                    <input type="text" placeholder="Descripcion..." name="descripcionproducto" value="<%= p.getDescripcion()%>" id="descripcionproducto" required />
                                     <input type="hidden" name="producto" value="" />
                                 </li>
                                 <li>
                                     <input type="file" accept="image/*" onchange="ingresarImagen(this.files[0].name)" placeholder="Presentacion..." name="presentacionproducto" id="presentacionproductoId" />
-                                    <input type="hidden" placeholder="Presentacion..." name="nombreimagenproducto" value="<%= p.getPresentacion()%>" id="nombreimagenId" />
+                                    <input type="hidden" placeholder="Presentacion..." name="nombreimagenproducto" value="<%= p.getPresentacion()%>" id="nombreimagenId" required />
                                     <input type="hidden" name="producto" value="" />
                                 </li>
                                 <li>
+                                    <%-- Carga de las marcas --%>
                                     <%
                                         ProductoDAO daoMarca = new ProductoDAO();
                                         List<Producto> marcas = daoMarca.listarMarcas();
                                     %> 
-                                    <select name="marcaproducto" value="<%= p.getIdMarca()%>">
+                                    <select name="marcaproducto" value="<%= p.getIdMarca()%>" onfocus='this.size = 4;' onblur='this.size = 1;' onchange='this.size = 1; this.blur();'>
                                         <%
                                             for (Producto marca : marcas) {
                                         %>
@@ -70,27 +79,29 @@
 
                                 </li>
                                 <li>
-                                    <input type="date" placeholder="Fecha Vencimineto..." name="vencimientoproducto" value="<%= p.getFechaVencimiento()%>" id="vencimientoproducto" />
+                                    <label>Fecha de Vencimiento</label>
+                                    <input type="date" placeholder="Fecha Vencimineto..." name="vencimientoproducto" value="<%= p.getFechaVencimiento()%>" id="vencimientoproducto" required />
                                     <input type="hidden" name="producto" value="" />
                                 </li>
                                 <li>
-                                    <input type="text" placeholder="Precio Compra..." name="preciocompraproducto" value="<%= p.getPrecioCompra()%>" id="preciocompraproducto" />
+                                    <input type="text" placeholder="Precio Compra..." name="preciocompraproducto" value="<%= p.getPrecioCompra()%>" id="preciocompraproducto" required />
                                     <input type="hidden" name="producto" value="" />
                                 </li>
                                 <li>
-                                    <input type="text" placeholder="Precio Venta..." name="precioventaproducto" value="<%= p.getPrecioVenta()%>" id="precioventaproducto" />
+                                    <input type="text" placeholder="Precio Venta..." name="precioventaproducto" value="<%= p.getPrecioVenta()%>" id="precioventaproducto" required />
                                     <input type="hidden" name="producto" value="" />
                                 </li>
                                 <li>
-                                    <input type="text" placeholder="Cantidad en Stock..." name="cantidadproducto" value="<%= p.getCantidad()%>" id="cantidadproducto" />
+                                    <input type="text" placeholder="Cantidad en Stock..." name="cantidadproducto" value="<%= p.getCantidad()%>" id="cantidadproducto" required />
                                     <input type="hidden" name="producto" value="" />
                                 </li>
                                 <li>  
+                                    <%-- Carga de las subcategorias --%>
                                     <%
                                         ProductoDAO dao = new ProductoDAO();
                                         List<Producto> subcategorias = dao.listarSubcategorias();
                                     %>
-                                    <select name="subcategoriaproducto" value="<%= p.getIdSubcategoria()%>" >
+                                    <select name="subcategoriaproducto" value="<%= p.getIdSubcategoria()%>" onfocus='this.size = 4;' onblur='this.size = 1;' onchange='this.size = 1; this.blur();' >
                                         <%
                                             for (Producto subcategoria : subcategorias) {
                                         %>
@@ -101,19 +112,16 @@
 
                                 </li>
                                 <li>
-                                    <input type="submit" value="Actualizar" name="accion">                                    
+                                    <input class="btn-agregarproducto" type="submit" value="Actualizar" name="accion">                                    
                                 </li>
                                 <li>
-                                    <a href="Administrador?accion=listarProducto">Regresar</a>
+                                    <a class="btn-cancelar" href="Administrador?accion=listarProducto">Cancelar</a>
                                 </li>
                             </ul>
-                        </form>
-                        <a href="Administador?accion=nuevamarca">Agregar nueva marca</a>
-                        <a href="Administador?accion=nuevasubcategoria">Agregar nueva subcategoria</a>
+                        </form>                        
                     </div>                    
                 </div>
-        </div>
-    </main>
-</div>
-</body>
+            </main>
+        </div>   
+    </body>
 </html>
