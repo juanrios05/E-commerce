@@ -25,6 +25,8 @@
         </script>
     </head>
     <body>
+        <%-- Carga de los datos identificados por el id del producto --%>
+        
         <%
             ProductoDAO prodDAO = new ProductoDAO();
             String idProducto = (String) request.getAttribute("idprod");
@@ -61,6 +63,7 @@
                                     <input type="hidden" name="producto" value="" />
                                 </li>
                                 <li>
+                                    <%-- Carga de las marcas --%>
                                     <%
                                         ProductoDAO daoMarca = new ProductoDAO();
                                         List<Producto> marcas = daoMarca.listarMarcas();
@@ -93,6 +96,7 @@
                                     <input type="hidden" name="producto" value="" />
                                 </li>
                                 <li>  
+                                    <%-- Carga de las subcategorias --%>
                                     <%
                                         ProductoDAO dao = new ProductoDAO();
                                         List<Producto> subcategorias = dao.listarSubcategorias();

@@ -41,6 +41,7 @@
                                     <input type="hidden" placeholder="Presentacion..." name="nombreimagenproducto" id="nombreimagenId" required />
                                 </li>
                                 <li>
+                                    <%-- Carga de las marcas --%>
                                     <%
                                         ProductoDAO daoMarca = new ProductoDAO();
                                         List<Producto> marcas = daoMarca.listarMarcas();
@@ -68,6 +69,7 @@
                                     <input type="text" placeholder="Cantidad en Stock..." name="cantidadproducto" id="cantidadproducto" required />
                                 </li>
                                 <li>  
+                                    <%-- Carga de las subcategorias --%>
                                     <%
                                         ProductoDAO dao = new ProductoDAO();
                                         List<Producto> subcategorias = dao.listarSubcategorias();

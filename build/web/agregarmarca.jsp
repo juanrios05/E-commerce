@@ -1,9 +1,3 @@
-<%-- 
-    Document   : agregarmarca
-    Created on : 14/07/2021, 07:01:02 PM
-    Author     : juanb
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

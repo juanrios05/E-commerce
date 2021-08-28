@@ -47,6 +47,7 @@
                                     <th>Total</th>                                                
                                 </tr>
                             </thead>
+                            <%-- Carga de ventas --%>
                             <%
                                 DetalleVentaDAO dao = new DetalleVentaDAO();
                                 List<DetalleVenta> list = dao.listarVentas();

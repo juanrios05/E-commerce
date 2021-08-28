@@ -1,9 +1,3 @@
-<%-- 
-    Document   : agregarproveedor
-    Created on : 14/07/2021, 11:38:56 PM
-    Author     : juanb
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

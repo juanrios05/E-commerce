@@ -47,7 +47,8 @@
                     <a href="Administrador?accion=copiaSeguridadBaseDatos">Base de Datos</a>
                 </div>
                 <strong>|</strong>
-                <div>                   
+                <div>             
+                    <%-- Cierre de sesion --%>
                     <form method="post" action="Validar">
                         <button class="danger" type="submit" name="accion" value="Salir">Cerrar Sesion</button>
                     </form>                                        
@@ -56,6 +57,7 @@
             <main>
                 <div>
                     <ul class="productos">
+                        <%-- Carga de los productos sin opcion de compra --%>
                         <%= cp.obtenerProductos()%>
                     </ul>
                 </div>

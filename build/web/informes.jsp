@@ -21,38 +21,39 @@
                         <span>Clientes</span>
                         <div class="dropdown-content">
                             <a href="informesjsp/listadoclientes.jsp" target="contenedorregistros">Listado Clientes</a>   
-                            <a href="informeclientes.jsp" target="contenedorregistros">Mejores Clientes</a>                            
+                            <a href="informesjsp/mejoresclientestotalventas.jsp" target="contenedorregistros">Mejores Clientes Ventas</a>
+                            <a href="informesjsp/mejoresclientescantprod.jsp" target="contenedorregistros">Mejores Clientes Productos</a>
+                            <a href="seleccionidclientereporte.jsp" target="contenedorregistros">Ventas por Cliente</a>                            
                         </div>
                     </div>
                     <span><b>|</b></span>
                     <div class="dropdown">
                         <span>Proveedores</span>
                         <div class="dropdown-content">
-                            <p>Mejor Proveedor</p>                                                        
+                            <a href="informesjsp/proveedormasventas.jsp" target="contenedorregistros">Mejor Proveedor Total</a>
+                            <a href="informesjsp/proveedormasventascant.jsp" target="contenedorregistros">Mejor Proveedor Cantidad</a>                            
                         </div>                        
                     </div>
                     <span><b>|</b></span>
                     <div class="dropdown">
                         <span>Productos</span>
                         <div class="dropdown-content">
-                            <p>Mejor Producto</p>
+                            <a href="informesjsp/productomasvendido.jsp" target="contenedorregistros">Producto Mayor Precio Vendido</a>
+                            <a href="informesjsp/productomasvendidocant.jsp" target="contenedorregistros">Producto Mayor Cantidad Vendida</a>
+                            <a href="seleccionidproducto.jsp" target="contenedorregistros">Ventas Por Producto</a>
+                            <a href="ingresofechasprod.jsp" target="contenedorregistros">Ventas en Rangos de Fechas</a>
+                            <a href="informesjsp/marcasmasvendidas.jsp" target="contenedorregistros">Marca Mas Vendida Total</a>
+                            <a href="informesjsp/marcasmasvendidascant.jsp" target="contenedorregistros">Marca Mas Vendida Cantidad</a>
                         </div>                        
                     </div>                    
                     <span><b>|</b></span>
                     <div class="dropdown">
                         <span>Ventas</span>
                         <div class="dropdown-content">
-                            <p>Mayor Venta</p>                            
-
+                            <a href="informesjsp/mayorventa.jsp" target="contenedorregistros">Mayor Venta</a>
+                            <a href="ingresofechas.jsp" target="contenedorregistros">Ventas en Rangos de Fechas</a>
                         </div>                        
-                    </div>  
-                    <span><b>|</b></span>
-                    <div class="dropdown">
-                        <span>Compras</span>
-                        <div class="dropdown-content">
-                            <p>Menor Venta</p>                                                        
-                        </div>                        
-                    </div>  
+                    </div>                                          
                 </div>
                 <div>
                     <iframe name="contenedorregistros" style="height: 600px; width: 100%;"></iframe>
