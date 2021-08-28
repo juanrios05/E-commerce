@@ -50,6 +50,7 @@ public class ProductoDAO implements ProductoCRUD {
                 prod.setCantidad(rs.getInt("cantidad"));
                 prod.setIdSubcategoria(rs.getInt("id_subcategoria"));
                 prod.setNombreSubcategoria(rs.getString("subcategoria"));
+                prod.setCantidadAgregadoAlCarrito(1);
                 list.add(prod);
 
             }
