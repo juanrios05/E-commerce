@@ -48,6 +48,7 @@ public class Administrador extends HttpServlet {
     String agregarProveedor = "agregarproveedor.jsp";
     String editarProveedor = "editarproveedor.jsp";
     String listarVentas = "ventas.jsp";
+    String respaldarBD = "respaldobd.jsp";
     Producto producto = new Producto();
     ProductoDAO productoDAO = new ProductoDAO();
     Marca marcas = new Marca();
@@ -56,6 +57,7 @@ public class Administrador extends HttpServlet {
     ProveedorDAO proveedorDAO = new ProveedorDAO();
     String idProd;
     String idProv;
+    Modelos.Usuario usuario = new Modelos.Usuario();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -108,6 +110,7 @@ public class Administrador extends HttpServlet {
         String accion = request.getParameter("accion");
         if (accion.equalsIgnoreCase("listarProducto")) {
             acceso = listarProducto;
+            request.setAttribute("usuario", usuario);
         } else if (accion.equalsIgnoreCase("agregarProducto")) {
             acceso = agregarProducto;
         } else if (accion.equalsIgnoreCase("Agregar")) {
@@ -178,12 +181,53 @@ public class Administrador extends HttpServlet {
             producto.setIdProducto(idProd);
             productoDAO.eliminarProducto(idProd);
             acceso = listarProducto;
-        } else if (accion.equalsIgnoreCase("IndexAdministrador")) {
-            request.setAttribute("ced", request.getParameter("cedula"));
+        } else if (accion.equalsIgnoreCase("inicio")) {
             acceso = inicio;
-        }
-            RequestDispatcher vista = request.getRequestDispatcher(acceso);
-            vista.forward(request, response);
+        } else if (accion.equalsIgnoreCase("listarProveedor")) {
+            acceso = listarProveedor;
+        } else if (accion.equalsIgnoreCase("agregarProveedor")) {
+            acceso = agregarProveedor;
+        } else if (accion.equalsIgnoreCase("Agregar Proveedor")) {
+            String idProveedor = request.getParameter("idproveedor");
+            String nombreProveedor = request.getParameter("nombreproveedor");
+            String telefonoProveedor = request.getParameter("telefonoproveedor");
+            String correoProveedor = request.getParameter("correoproveedor");
+            String direccionProveedor = request.getParameter("direccionproveedor");
+            proveedor.setIdProveedor(idProveedor);
+            proveedor.setNombreProveedor(nombreProveedor);
+            proveedor.setTelefonoProveedor(telefonoProveedor);
+            proveedor.setCorreoProveedor(correoProveedor);
+            proveedor.setDireccionProveedor(direccionProveedor);
+            proveedorDAO.agregarProveedor(proveedor);
+            acceso = listarProveedor;
+        } else if (accion.equalsIgnoreCase("editarProveedor")) {
+            request.setAttribute("idprov", request.getParameter("idProveedor"));
+            acceso = editarProveedor;
+        } else if (accion.equalsIgnoreCase("Actualizar Proveedor")) {
+            idProv = request.getParameter("idproveedor");
+            String nombreProveedor = request.getParameter("nombreproveedor");
+            String telefonoProveedor = request.getParameter("telefonoproveedor");
+            String correoProveedor = request.getParameter("correoproveedor");
+            String direccionProveedor = request.getParameter("direccionproveedor");
+            proveedor.setIdProveedor(idProv);
+            proveedor.setNombreProveedor(nombreProveedor);
+            proveedor.setTelefonoProveedor(telefonoProveedor);
+            proveedor.setCorreoProveedor(correoProveedor);
+            proveedor.setDireccionProveedor(direccionProveedor);
+            proveedorDAO.editarProveedor(proveedor);
+            acceso = listarProveedor;
+        } else if (accion.equalsIgnoreCase("eliminarProveedor")) {
+            idProv = request.getParameter("idProveedor");
+            proveedor.setIdProveedor(idProv);
+            proveedorDAO.eliminarProveedor(idProv);
+            acceso = listarProveedor;
+        } else if (accion.equalsIgnoreCase("listarVentas")) {
+            acceso = listarVentas;
+        } else if (accion.equalsIgnoreCase("copiaSeguridadBaseDatos")) {
+            acceso = respaldarBD;
+        } 
+        RequestDispatcher vista = request.getRequestDispatcher(acceso);
+        vista.forward(request, response);
         }
 
         /**

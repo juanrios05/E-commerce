@@ -24,35 +24,40 @@
         <div class="grid-container">
             <header>
                 <div>
-                    <a class="logo" href="/#/">El Rinconcito</a>
-                </div>
+                    <a class="logo">El Rinconsito</a>
+                </div>       
+                <strong>|</strong>
                 <div>
                     <a href="Administrador?accion=listarProducto">Productos</a>
                 </div>
+                <strong>|</strong>
                 <div>
-                    <a href="Administrador?accion=listarProovedor">Proveedores</a>
+                    <a href="Administrador?accion=listarProveedor">Proveedores</a>
                 </div>
+                <strong>|</strong>
                 <div>
                     <a href="Administrador?accion=listarVentas">Ventas</a>
-                </div> 
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="drop-button">
-                        ${usuario.getNombres()}
-                    </button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a href="#"><i class="icono-index fa fa-user-cog"></i></a>
-                        <a href="#">${usuario.getCedula()}</a>
-                        <a href="#">${usuario.getCorreo()}</a>  
-                        <div class="dropdown-divider"></div>
-                        <form method="post" action="Validar">
-                            <button class="danger" type="submit" name="accion" value="Salir">Cerrar Sesion</button>
-                        </form>                        
-                    </div>
+                </div>
+                <strong>|</strong>
+                <div>
+                    <a href="informes.jsp">Informes</a>
+                </div>
+                <strong>|</strong>
+                <div>
+                    <a href="Administrador?accion=copiaSeguridadBaseDatos">Base de Datos</a>
+                </div>
+                <strong>|</strong>
+                <div>             
+                    <%-- Cierre de sesion --%>
+                    <form method="post" action="Validar">
+                        <button class="danger" type="submit" name="accion" value="Salir">Cerrar Sesion</button>
+                    </form>                                        
                 </div>
             </header>
             <main>
                 <div>
                     <ul class="productos">
+                        <%-- Carga de los productos sin opcion de compra --%>
                         <%= cp.obtenerProductos()%>
                     </ul>
                 </div>
