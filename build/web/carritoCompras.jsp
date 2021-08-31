@@ -64,19 +64,19 @@
                         </thead>
                         <tbody>
                             <% Carrito carrito=(Carrito) request.getAttribute("carrito");
-                            double total=0;
-                            for(int i=0;i<carrito.getListaProductos().size();i++){
+                            double  total=0;
+                            for(int i=0;i<carrito.getListaProductos().size();i++) {
                           out.println("<tr>"
                                   + "<td style='text-align:center'>"+carrito.getListaProductos().get(i).getNombre()+ "</td>"
                                   + "<td style='text-align:center'><img src= 'img/"+ carrito.getListaProductos().get(i).getPresentacion() +"  ' class=\"imagen-carrito2\"></td>"
                                   + "<td style='text-align:center'>"+carrito.getListaProductos().get(i).getDescripcion()+ "</td>"                                                         
-                                  + "<td style='text-align:center'> <select name='txtcantidad'><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option>><option value='4'>4</option>><option value='5'>5</option></select> </td>"
+                                  + "<td style='text-align:center'>"+carrito.getListaProductos().get(i).getCantidadAgregadoAlCarrito()+ "</td>"                                                         
                                   + "<td style='text-align:center'>"+carrito.getListaProductos().get(i).getPrecioCompra()+  "</td>"                  
                                   + 
                                           
                                   
                                           "</tr>"); 
-                                  total += carrito.getListaProductos().get(i).getPrecioCompra();
+                                  total += ((int) Math.round(carrito.getListaProductos().get(i).getPrecioCompra())) * carrito.getListaProductos().get(i).getCantidadAgregadoAlCarrito();
                           
                          ;}
                             

@@ -10,6 +10,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -65,11 +66,36 @@ public class ControladorServlet extends HttpServlet {
         }
 
         if (accion.equals("agregarCarrito")) {
+            
             String idProducto = request.getParameter("idProducto");
-            Producto producto = productoDao.listarProducto(idProducto);
-            carrito.getListaProductos().add(producto);
+
+            List<String> listTest = new ArrayList<>();
+            listTest = carrito.getListaProductos().stream().map(p->p.getIdProducto()).collect(Collectors.toList());
+
+            if(listTest.contains(idProducto)){
+                
+                int index = listTest.indexOf(idProducto);
+                
+                Producto productoTemp = carrito.getListaProductos().get(index);
+                productoTemp.setCantidadAgregadoAlCarrito(productoTemp.getCantidadAgregadoAlCarrito()+1);             
+                carrito.getListaProductos().set(index, productoTemp);    
+                
+            } else {
+                Producto producto = productoDao.listarProducto(idProducto);
+                producto.setCantidadAgregadoAlCarrito(1);
+                carrito.getListaProductos().add(producto);
+                
+            }         
+            
+            int contador = 0;
+            for(Producto producto : carrito.getListaProductos()){
+                contador += producto.getCantidadAgregadoAlCarrito();
+            }
+             
+            
+            
             carrito.setCantidadProductos(carrito.getListaProductos().size());
-            request.setAttribute("contador", carrito.getListaProductos().size());
+            request.setAttribute("contador", contador);
             request.getRequestDispatcher("sesioniniciada.jsp").forward(request, response);
         }
 

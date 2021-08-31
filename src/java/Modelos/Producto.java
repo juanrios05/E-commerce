@@ -1,5 +1,11 @@
 package Modelos;
 
+import java.util.Objects;
+
+/**
+ *
+ * @author juanb
+ */
 public class Producto {
 
     private String idProducto;
@@ -14,13 +20,16 @@ public class Producto {
     private int cantidad;
     private int idSubcategoria;      
     private String nombreSubcategoria;
+    private int cantidadAgregadoAlCarrito;
+
     private String idProveedorProducto;
     private String nombreProveedorProducto;
 
     public Producto() {
     }
 
-    public Producto(String idProducto, String nombre, String descripcion, String presentacion, int idMarca, String nombreMarca, String fechaVencimiento, double precioCompra, double precioVenta, int cantidad, int idSubcategoria, String nombreSubcategoria, String idProveedorProducto, String nombreProveedorProducto) {
+    public Producto(String idProducto, String nombre, String descripcion, String presentacion, int idMarca, String nombreMarca, String fechaVencimiento, double precioCompra, double precioVenta, int cantidad, int idSubcategoria, String nombreSubcategoria, int cantidadAgregadoAlCarrito, String idProveedorProducto, String nombreProveedorProducto) {
+    
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -33,6 +42,7 @@ public class Producto {
         this.cantidad = cantidad;
         this.idSubcategoria = idSubcategoria;
         this.nombreSubcategoria = nombreSubcategoria;
+        this.cantidadAgregadoAlCarrito = cantidadAgregadoAlCarrito;
         this.idProveedorProducto = idProveedorProducto;
         this.nombreProveedorProducto = nombreProveedorProducto;
     }
@@ -133,6 +143,74 @@ public class Producto {
         this.nombreSubcategoria = nombreSubcategoria;
     }
 
+    public int getCantidadAgregadoAlCarrito() {
+        return cantidadAgregadoAlCarrito;
+    }
+
+    public void setCantidadAgregadoAlCarrito(int cantidadAgregadoAlCarrito) {
+        this.cantidadAgregadoAlCarrito = cantidadAgregadoAlCarrito;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Producto other = (Producto) obj;
+        if (this.idMarca != other.idMarca) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.precioCompra) != Double.doubleToLongBits(other.precioCompra)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.precioVenta) != Double.doubleToLongBits(other.precioVenta)) {
+            return false;
+        }
+        if (this.cantidad != other.cantidad) {
+            return false;
+        }
+        if (this.idSubcategoria != other.idSubcategoria) {
+            return false;
+        }
+        if (!Objects.equals(this.idProducto, other.idProducto)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.descripcion, other.descripcion)) {
+            return false;
+        }
+        if (!Objects.equals(this.presentacion, other.presentacion)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombreMarca, other.nombreMarca)) {
+            return false;
+        }
+        if (!Objects.equals(this.fechaVencimiento, other.fechaVencimiento)) {
+            return false;
+        }
+        if (!Objects.equals(this.nombreSubcategoria, other.nombreSubcategoria)) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    
+    
     public String getIdProveedorProducto() {
         return idProveedorProducto;
     }
