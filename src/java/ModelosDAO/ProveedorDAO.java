@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ModelosDAO;
 
 import Config.Conexion;
@@ -15,10 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author juanb
- */
 public class ProveedorDAO implements ProveedorCRUD{
 
     Conexion cn = new Conexion();
@@ -38,7 +29,7 @@ public class ProveedorDAO implements ProveedorCRUD{
             while (rs.next()) {
                 Proveedor prov = new Proveedor();
                 prov.setIdProveedor(rs.getString("id_proveedor"));
-                prov.setNombreProveedor(rs.getString("nombre"));
+                prov.setNombreProveedor(rs.getString("nombre_proveedor"));
                 prov.setTelefonoProveedor(rs.getString("telefono"));
                 prov.setCorreoProveedor(rs.getString("correo"));
                 prov.setDireccionProveedor(rs.getString("direccion"));
@@ -52,7 +43,7 @@ public class ProveedorDAO implements ProveedorCRUD{
 
     @Override
     public Proveedor listarProveedor(String idProveedor) {
-        String sql = "CALL sp_obtenerProveedor(?)";
+        String sql = "CALL sp_ObtenerProveedor(?)";
         try {
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
@@ -60,7 +51,7 @@ public class ProveedorDAO implements ProveedorCRUD{
             rs = ps.executeQuery();
             while (rs.next()) {
                 pvdor.setIdProveedor(rs.getString("id_proveedor"));
-                pvdor.setNombreProveedor(rs.getString("nombre"));
+                pvdor.setNombreProveedor(rs.getString("nombre_proveedor"));
                 pvdor.setTelefonoProveedor(rs.getString("telefono"));
                 pvdor.setCorreoProveedor(rs.getString("correo"));
                 pvdor.setDireccionProveedor(rs.getString("direccion"));                
@@ -91,7 +82,7 @@ public class ProveedorDAO implements ProveedorCRUD{
 
     @Override
     public boolean editarProveedor(Proveedor prov) {
-        String sql = "UPDATE tbl_proveedor SET nombre='" + prov.getNombreProveedor() + "',telefono='" + prov.getTelefonoProveedor() + "',correo='" + prov.getCorreoProveedor() + "',direccion='" + prov.getDireccionProveedor() +"' WHERE id_proveedor='" + prov.getIdProveedor() + "'";
+        String sql = "UPDATE tbl_proveedor SET nombre_proveedor='" + prov.getNombreProveedor() + "',telefono='" + prov.getTelefonoProveedor() + "',correo='" + prov.getCorreoProveedor() + "',direccion='" + prov.getDireccionProveedor() +"' WHERE id_proveedor='" + prov.getIdProveedor() + "'";
         try {
             con = cn.getConexion();
             ps = con.prepareStatement(sql);

@@ -29,16 +29,17 @@
                 <div>
                     <a href="Controlador?accion=verCarrito" title="Carrito"><i class="fas fa-shopping-cart">(<label style="color: #41df41">${contador}</label>)</i></a>
                 </div>
-                <div class="dropdown">                    
+                <div> 
+                    <%-- Cierre de sesion --%>
                     <form method="post" action="Validar">
                         <button class="danger" type="submit" name="accion" value="Salir">Cerrar Sesion</button>
                     </form>                                        
                 </div>
-             
             </header>
             <main>
                 <div>
                     <ul class="productos">
+                        <%-- Carga de los productos con opcion de compra --%>
                         <%= cp.obtenerProductosUsuario()%>
                     </ul>
                 </div>

@@ -22,6 +22,7 @@ import java.util.List;
  * @author juanb
  */
 public class ProductoDAO implements ProductoCRUD {
+
     Conexion cn = new Conexion();
     Connection con;
     PreparedStatement ps;
@@ -50,8 +51,10 @@ public class ProductoDAO implements ProductoCRUD {
                 prod.setCantidad(rs.getInt("cantidad"));
                 prod.setIdSubcategoria(rs.getInt("id_subcategoria"));
                 prod.setNombreSubcategoria(rs.getString("subcategoria"));
+                prod.setCantidadAgregadoAlCarrito(1);
+                prod.setIdProveedorProducto(rs.getString("id_proveedor"));
+                prod.setNombreProveedorProducto(rs.getString("nombre_proveedor"));
                 list.add(prod);
-
             }
         } catch (SQLException e) {
             System.err.println("Error" + e);
@@ -106,7 +109,7 @@ public class ProductoDAO implements ProductoCRUD {
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, idProducto);
-            rs = ps.executeQuery();            
+            rs = ps.executeQuery();
             while (rs.next()) {
                 p.setIdProducto(rs.getString("id_producto"));
                 p.setNombre(rs.getString("nombre"));
@@ -119,7 +122,7 @@ public class ProductoDAO implements ProductoCRUD {
                 p.setPrecioVenta(rs.getDouble("precio_venta"));
                 p.setCantidad(rs.getInt("cantidad"));
                 p.setIdSubcategoria(rs.getInt("id_subcategoria"));
-                p.setNombreSubcategoria(rs.getString("subcategoria"));                
+                p.setNombreSubcategoria(rs.getString("subcategoria"));
             }
         } catch (SQLException e) {
             System.err.println("Error" + e);
@@ -174,20 +177,20 @@ public class ProductoDAO implements ProductoCRUD {
             System.err.println("Error" + e);
         }
         return false;
-    }   
+    }
 
     @Override
     public boolean agregarMarca(Marca marca) {
         String sql = "CALL sp_AgregarMarca(null,?)";
         try {
             con = cn.getConexion();
-            ps = con.prepareStatement(sql);           
+            ps = con.prepareStatement(sql);
             ps.setString(1, marca.getMarcaProducto());
-            ps.executeUpdate();            
+            ps.executeUpdate();
         } catch (SQLException e) {
             System.err.println("Error" + e);
         }
-        return false;        
+        return false;
     }
 
     @Override
@@ -202,6 +205,6 @@ public class ProductoDAO implements ProductoCRUD {
             System.err.println("Error" + e);
         }
         return false;
-    }    
+    }
 
 }

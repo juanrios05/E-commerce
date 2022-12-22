@@ -15,25 +15,26 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://kit.fontawesome.com/fec6c7f184.js" crossorigin="anonymous"></script>
-        <script src="js/imagenproducto.js" type="text/javascript"></script>
+        <script src="https://kit.fontawesome.com/fec6c7f184.js" crossorigin="anonymous"></script>        
         <link rel="stylesheet" href="css/style2.css">
+        <script src="js/buscarregistro.js" type="text/javascript"></script>
         <title>Productos</title>
     </head>
     <body>
         <div class="grid-container">
             <header>
                 <div>
-                    <a class="logo" href="Controlador?menu=PrincipalAdministrador">El Rinconsito</a>
-                </div>            
+                    <a class="logo" href="sesioniniciadaadministrador.jsp">El Rinconsito</a>                    
+                </div>                  
             </header>            
-            <main>
-                <div class="form-container">                    
+            <main>                
+                <a href="sesioniniciadaadministrador.jsp"><i class="fas fa-arrow-left icono-regresar" title="Regresar"></i></a>                
+                <div class="form-container">                         
                     <div class="tabla-producto">
-                        <a href="Controlador?menu=PrincipalAdministrador">Regresar</a>
-                        <h1>Productos</h1>
-                        <a href="Administrador?accion=agregarProducto">Agregar Producto</a>                       
-                        <table border="1">
+                        <%-- Cuadro de busqueda --%>
+                        <input id="termino" type="text" onkeyup="buscar()" placeholder="Buscar..." />                            
+                        <a href="Administrador?accion=agregarProducto"><i class="far fa-plus-square" title="Nuevo Producto..."></i></a>                       
+                        <table id="datos" border="1">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -46,9 +47,11 @@
                                     <th>Precio Venta</th>
                                     <th>Stock</th>
                                     <th>Subcategoria</th>
+                                    <th>Proveedor</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
+                            <%-- Carga de productos --%>                            
                             <%
                                 ProductoDAO dao = new ProductoDAO();
                                 List<Producto> list = dao.listarProductos();
@@ -60,7 +63,7 @@
                             %>
                             <tbody>
                                 <tr>
-                                    <td><%= prod.getIdProducto()%></td>
+                                    <td class="id-producto"><%= prod.getIdProducto()%></td>
                                     <td><%= prod.getNombre()%></td>
                                     <td><%= prod.getDescripcion()%></td>
                                     <td><img src="img/<%= prod.getPresentacion()%>" width="75px" ></td>
@@ -70,9 +73,10 @@
                                     <td><%= prod.getPrecioVenta()%></td>
                                     <td><%= prod.getCantidad()%></td>
                                     <td><%= prod.getNombreSubcategoria()%></td>
+                                    <td><%= prod.getNombreProveedorProducto()%></td>
                                     <td>
-                                        <a href="Administrador?accion=editarProducto&idProducto=<%= prod.getIdProducto()%>">Editar</a>
-                                        <a href="Administrador?accion=eliminarProducto&idProducto=<%= prod.getIdProducto()%>">Borrar</a>
+                                        <a href="Administrador?accion=editarProducto&idProducto=<%= prod.getIdProducto()%>"><i class="far fa-edit" title="Editar"></i></a>
+                                        <a href="Administrador?accion=eliminarProducto&idProducto=<%= prod.getIdProducto()%>"><i class="far fa-trash-alt" title="Eliminar"></i></a>
                                     </td>
                                 </tr>
                                 <%}%>
@@ -80,8 +84,7 @@
                         </table>
                     </div>
                 </div>
-        </div>
-    </main>
-</div>
-</body>
+            </main>
+        </div>    
+    </body>
 </html>
